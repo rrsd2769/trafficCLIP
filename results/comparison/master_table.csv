@@ -1,0 +1,50 @@
+source,model,dataset,variant,n_seeds,accuracy_mean,accuracy_std,macro_f1_mean,macro_f1_std,notes
+A (executed),TrafficCLIP (independent implementation),10class,main,3,0.9975308641975308,0.0009238660214256243,0.9975343871874155,0.0009219303144039621,
+A (executed),TrafficCLIP (independent implementation),20class,main,3,0.9664197530864197,0.002348925628449437,0.9664069393109617,0.002290829991922458,
+A (executed),TrafficCLIP (independent implementation),20class,broken-conv1 ablation,3,0.9667901234567902,0.00136362481693673,0.9667896230590497,0.0013658332223205475,"conv1 left randomly initialised and frozen, as in src/models/traffic_clip.py"
+A (executed),TrafficCLIP-Full (independent implementation of B's architecture),10class,main,3,0.9967901234567901,0.0006983770678385352,0.9967963396092193,0.0006977338066297367,
+A (executed),TrafficCLIP-Full (independent implementation of B's architecture),20class,main,3,0.9662962962962963,0.0009072184232530348,0.9664181915012371,0.0007971026438052614,
+A (executed),TrafficCLIP-Full (independent implementation of B's architecture),20class,broken-conv1 ablation,3,0.9680246913580247,0.0020135193123827395,0.9679256466210925,0.002068285225750699,conv1 left randomly initialised and frozen
+A (executed),TrafficCLIP (independent implementation),iscxvpn_5class,main,3,0.9223560910307897,0.006825996671476319,0.920640014097957,0.009578499577216943,"ISCXVPN2016, 5-class traffic-type taxonomy (Chat/Email/FileTransfer/P2P/VoIPVideo)"
+A (executed),TrafficCLIP-Full (independent implementation of B's architecture),iscxvpn_5class,main,3,0.9196787148594378,0.00714663872291253,0.9147055114324175,0.009557146559918149,"ISCXVPN2016, 5-class traffic-type taxonomy"
+A (executed),TrafficCLIP (independent implementation),5g_3class,main,3,0.9765258215962441,0.01756646660457251,0.9819785014139919,0.013494236135358358,"UFJF 5G Traffic Capture Dataset, 3-class (eMBB/URLLC/mMTC)"
+A (executed),TrafficCLIP-Full (independent implementation of B's architecture),5g_3class,main,3,0.9859154929577465,0.011499951844052465,0.9891332641972029,0.008862550249056415,"UFJF 5G Traffic Capture Dataset, 3-class"
+A (executed),TrafficCLIP (independent implementation),iot23_9class,main,3,0.9870311952330879,0.0013114817338850046,0.9823107019114362,0.00265276667752846,"IoT-23, 9-class (3 benign devices + 6 malware families)"
+A (executed),TrafficCLIP-Full (independent implementation of B's architecture),iot23_9class,main,3,0.9891342446547494,0.002478467512045419,0.9867177006504512,0.0031851341587763164,"IoT-23, 9-class"
+"B (manuscript Table 1, pre-fix, not executed here)",original,10class,V1,,0.6274,,0.6221,,as reported in the manuscript's Table 1; not re-executed here
+"B (manuscript Table 1, pre-fix, not executed here)",original,10class,V2,,0.6163,,0.5905,,as reported in the manuscript's Table 1; not re-executed here
+"B (manuscript Table 1, pre-fix, not executed here)",optimized,10class,V3,,0.6163,,0.631,,as reported in the manuscript's Table 1; not re-executed here
+"B (manuscript Table 1, pre-fix, not executed here)",optimized,10class,V4,,0.7933,,0.7857,,as reported in the manuscript's Table 1; not re-executed here
+"B (manuscript Table 1, pre-fix, not executed here)",optimized,10class,V5,,0.6644,,0.6701,,as reported in the manuscript's Table 1; not re-executed here
+"B (manuscript Table 1, pre-fix, not executed here)",optimized,10class,Full,,0.8049,,0.7963,,as reported in the manuscript's Table 1; not re-executed here
+"B (manuscript headline, pre-fix, not executed here)",optimized,10class,Full (headline),,,,0.8754,,"the manuscript's separate headline figure, distinct from Table 1's Full row; traced to eval-time label leakage"
+"B (executed, post-fix)",original,10class,V1,5,0.3426666666666667,0.007726462109869796,0.29542534154178146,0.015215207812679077,"seeds [62, 63, 64, 65, 66]; use_stats_prompts=False, use_stats="
+"B (executed, post-fix)",original,10class,V2,5,0.36918518518518517,0.05896128789729365,0.31536666635607447,0.06430979219882839,"seeds [62, 63, 64, 65, 66]; use_stats_prompts=True, use_stats="
+"B (executed, post-fix)",optimized,10class,V3,5,0.47703703703703704,0.03734317918375547,0.3966058518854219,0.04901354868318814,"seeds [62, 63, 64, 65, 66]; use_stats_prompts=False, use_stats=False"
+"B (executed, post-fix)",optimized,10class,V4,5,0.86,0.009615374063516424,0.8619282998087522,0.008749622052177039,"seeds [62, 63, 64, 65, 66]; use_stats_prompts=True, use_stats=False"
+"B (executed, post-fix)",optimized,10class,V5,5,0.5022222222222222,0.028884140160511485,0.43825175236273617,0.03496256023327116,"seeds [62, 63, 64, 65, 66]; use_stats_prompts=False, use_stats=True"
+"B (executed, post-fix)",optimized,10class,Full,5,0.8813333333333333,0.02124647957605819,0.8828600488850574,0.021515894379422792,"seeds [62, 63, 64, 65, 66]; use_stats_prompts=True, use_stats=True"
+C (executed),cnn1d,10class,default,5,0.9962962962962962,0.0010475656017578498,0.9962977719606737,0.0010464896126725718,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),cnn1d,20class,default,5,0.9621481481481482,0.002151976155012462,0.9614771932849729,0.002348194702803503,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),cnn1d,3class,default,5,0.9661971830985916,0.006899971106431533,0.9691253899644441,0.011028976372649135,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),cnn1d,5class,default,5,0.9228915662650602,0.005764136584099316,0.9286246620903785,0.006452031041508376,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),cnn1d,9class,default,5,0.986750788643533,0.0010723490039101478,0.9825613911997824,0.001770971969620349,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),flowpic,10class,default,5,0.9939259259259259,0.0005543196128554221,0.9939261011621415,0.000553758425870001,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),flowpic,10class_orig,default,5,0.8071111111111111,0.0005925925925926168,0.8081623299360219,0.0006896043519115883,trained on the model's own published input representation (scripts/extract_original_representations.py)
+C (executed),flowpic,20class,default,5,0.9387407407407407,0.0034553789006490777,0.9381999120983802,0.0033955294302454725,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),flowpic,20class_orig,default,5,0.6462962962962964,0.005660732792457116,0.6507332670959817,0.004092057381988444,trained on the model's own published input representation (scripts/extract_original_representations.py)
+C (executed),flowpic,3class,default,5,0.971830985915493,0.0,0.9781305114638448,0.0,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),flowpic,5class,default,5,0.8991967871485944,0.007002247298860495,0.9087846520130383,0.0057595325005646335,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),flowpic,9class,default,5,0.9831756046267086,0.0013300852408699724,0.9799325906058073,0.0013062457283086633,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),fsnet,10class,default,5,0.9945185185185185,0.0017900808849769746,0.9945204129447969,0.0017878793187276465,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),fsnet,10class_orig,default,5,0.9167407407407406,0.0038802372899877703,0.9097417169971369,0.0038651350851515247,trained on the model's own published input representation (scripts/extract_original_representations.py)
+C (executed),fsnet,20class,default,5,0.954962962962963,0.0029406567764857857,0.9544152275736757,0.0028405268457018427,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),fsnet,20class_orig,default,5,0.8096296296296297,0.009454243282747844,0.7985755974598194,0.006661037940636026,trained on the model's own published input representation (scripts/extract_original_representations.py)
+C (executed),fsnet,3class,default,5,0.9802816901408452,0.0068999711064314795,0.9824095104760964,0.00897935567622785,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),fsnet,5class,default,5,0.8859437751004016,0.010954362808823987,0.895437696743676,0.010115280024747977,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),fsnet,9class,default,5,0.98527865404837,0.0025756989934628423,0.9796041978092802,0.0038489974373496676,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),transformer,10class,default,5,0.994962962962963,0.0013578002059128793,0.9949622232141285,0.0013550255447051713,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),transformer,20class,default,5,0.9517037037037037,0.004074747419103736,0.950716458085104,0.004342255131789435,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),transformer,3class,default,5,0.9464788732394366,0.02069991331929448,0.9587504677070762,0.015838684534226394,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),transformer,5class,default,5,0.8546184738955824,0.02665771369522262,0.8499715723118493,0.051426101913760874,"trained on the 28x28 flow-byte image, not the model's own published input representation"
+C (executed),transformer,9class,default,5,0.9781282860147213,0.003843463066771178,0.9740138397992512,0.0038199680908594554,"trained on the 28x28 flow-byte image, not the model's own published input representation"

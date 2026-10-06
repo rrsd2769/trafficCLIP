@@ -1,0 +1,2 @@
+variant,model_version,use_stats_prompts,use_stats,seed,accuracy,precision,recall,macro_f1,seconds
+Full,optimized,True,True,62,0.8481481481481481,0.8646473148788827,0.8481481481481481,0.8491734318930488,742.802148103714
