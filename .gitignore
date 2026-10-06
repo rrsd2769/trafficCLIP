@@ -1,0 +1,26 @@
+# Data: never committed (large, redistributable only from source)
+data/
+cache/
+cache_full/
+
+# Environment
+.venv/
+__pycache__/
+*.pyc
+.python-version
+
+# Model artifacts
+*.pt
+*.pth
+*.onnx
+
+# Tracking
+mlruns/
+.mlflow/
+*.db
+
+# OS
+.DS_Store
+
+# Training run artifacts
+experiments/

@@ -1,0 +1,131 @@
+dataset:
+  traffic:
+    url: "https://raw.githubusercontent.com/yungshenglu/USTC-TFC2016/master"
+
+    # Flows drawn per class. The manuscript (section V.A) uses 900, giving
+    # 9,000 instances over the 10-class subset.
+    samples_per_class: 900
+
+    # All 20 USTC-TFC2016 classes, used for the A-vs-Chen-et-al. comparison
+    # (the base paper reports 99.05% on the full set).
+    classes:
+      Benign:
+        - name: "BitTorrent"
+          extension: ".pcap"
+        - name: "Facetime"
+          extension: ".pcap"
+        - name: "FTP"
+          extension: ".pcap"
+        - name: "Gmail"
+          extension: ".pcap"
+        - name: "MySQL"
+          extension: ".pcap"
+        - name: "Outlook"
+          extension: ".pcap"
+        - name: "Skype"
+          extension: ".pcap"
+        - name: "SMB"
+          extension: ".7z"
+        - name: "Weibo"
+          extension: ".7z"
+        - name: "WorldOfWarcraft"
+          extension: ".pcap"
+      Malware:
+        - name: "Cridex"
+          extension: ".7z"
+        - name: "Geodo"
+          extension: ".7z"
+        - name: "Htbot"
+          extension: ".7z"
+        - name: "Miuref"
+          extension: ".pcap"
+        - name: "Neris"
+          extension: ".7z"
+        - name: "Nsis-ay"
+          extension: ".7z"
+        - name: "Shifu"
+          extension: ".7z"
+        - name: "Tinba"
+          extension: ".pcap"
+        - name: "Virut"
+          extension: ".7z"
+        - name: "Zeus"
+          extension: ".pcap"
+
+    # The 10-class balanced subset the manuscript evaluates on
+    # (section V.A): five benign, five malware. This is the B configuration
+    # and the row that A's 10-class run is compared against.
+    #
+    # Note on Gmail: it appears in the notebook, in run_explain.sh's --conflicts
+    # default, and in the commented-out `prompts:` block below, but not here.
+    # That is not an error. Those references belong to an earlier SIX-class
+    # experiment {BitTorrent, Cridex, Gmail, Skype, Tinba, Zeus} at 1500
+    # samples/class, whose results are the ones under results/metrics/v0.0.1/
+    # (confirmed from the axis labels of the v0.0.1 confusion matrices). The
+    # manuscript supersedes it with the 10-class subset listed here. Gmail is
+    # still downloaded, because it is part of the full 20-class set for A.
+    subset_10class:
+      - "BitTorrent"
+      - "Cridex"
+      - "Facetime"
+      - "Geodo"
+      - "Miuref"
+      - "MySQL"
+      - "Skype"
+      - "Tinba"
+      - "Weibo"
+      - "Zeus"
+
+user:
+  name: "pramitde726"
+  repo: "Optimized-TrafficCLIP-Edge"
+  ht_repo: "Optimized-TrafficCLIP-Edge-tuning"
+
+# Legacy semantic prompts from the superseded six-class experiment; retained
+# for provenance. See the note on Gmail under subset_10class.
+# prompts:
+#   BitTorrent : "Sparse but highly concurrent network flow with massive peer-to-peer connection establishment and aggressive packet-size distribution for distributed data chunk retrieval."
+#   Cridex: "High-entropy HTTPS traffic with periodic beaconing and bursty command-and-control synchronization, characterized by small outbound packets and large encrypted payload updates."
+#   Gmail : "High-volume TLS traffic with variable throughput and large packet length variance, typical of browser-based webmail synchronization and interactive session updates."
+#   Skype : "Constant-bitrate UDP streaming with low jitter and symmetric flow distribution, representing real-time peer-to-peer encrypted media communication and synchronization."
+#   Tinba : "Compact, low-latency UDP-like behavior over TCP, exhibiting frequent polling with very small packet sizes and highly consistent inter-arrival times for lightweight synchronization."
+#   Zeus  : "Persistent TCP connection with low throughput and irregular bursts, showing botnet communication patterns and fragmented data exfiltration via non-standard HTTP headers."
+
+paths:
+  raw_data_dir: "data/raw/"
+  mini_output_data_file: "data/processed/traffic_dataset_metadata_mini.npz"
+  output_data_file: "data/processed/ustc_10class.npz"
+  ustc_10class_file: "data/processed/ustc_10class.npz"
+  ustc_20class_file: "data/processed/ustc_20class.npz"
+  tensors_dir: "data/tensors/"
+  cache_dir: "cache/"
+
+preprocess:
+  batch_size: 64
+  tokenizer: "google-bert/bert-base-uncased"
+  max_length: 64
+
+train:
+  seed : 42
+  tuning_epochs : 8
+  original:
+    batch_size: 64
+    epochs: 100 # 100
+    # lambda_cl : 1.0
+  optimized:
+    batch_size: 64
+    epochs: 100 # 100
+    # lambda_cl : 2.0
+
+early_stopping:
+  original:
+    patience: 10
+    delta: 0.01
+  optimized:
+    patience: 10
+    delta: 0.01
+
+test:
+  seed: 42
+  max_length: 64
+  batch_size: 64

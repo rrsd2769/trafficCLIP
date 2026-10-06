@@ -1,0 +1,7 @@
+# Experiment tracking and ONNX export. Separated from requirements.txt because
+# these are heavy and are not needed for Phases 0-2 (data + cache).
+-r requirements.txt
+mlflow>=2.14
+dagshub>=0.3
+onnx>=1.16
+onnxruntime>=1.18

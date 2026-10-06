@@ -1,0 +1,55 @@
+# Conda/mamba spec, repaired for osx-arm64.
+#
+# The original spec could not solve on any platform: it pinned
+# torchvision=0.15.* against pytorch=2.8.* (torchvision 0.15 pairs with torch
+# 2.0), and transformers=5.3.0 against huggingface_hub=1.6.0. Version pins are
+# relaxed to ranges so the solver can find a consistent set.
+#
+# The tested local environment is the pip one -- see requirements.txt and
+# docs/ENVIRONMENT.md. This file is kept working for anyone reproducing the
+# project through the run book's conda instructions.
+
+name: traffic-opt
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+
+  # Core data
+  - pandas>=2.1
+  - numpy>=1.26
+  - scipy>=1.11
+  - scapy>=2.5
+  - requests
+  - py7zr
+  - pyyaml
+
+  # Deep Learning
+  # conda-forge ships osx-arm64 torch builds with MPS enabled.
+  - pytorch>=2.4
+  - torchvision>=0.19
+  - transformers>=4.44
+  - huggingface_hub>=0.24
+
+  # Metrics
+  - scikit-learn>=1.4
+
+  # Visualization
+  - matplotlib
+  - seaborn
+
+  # Optimization
+  - optuna>=3.6
+
+  # Environment & config
+  - python-dotenv
+
+  # Testing
+  - pytest>=8.0
+
+  - pip
+  - pip:
+      - mlflow>=2.14
+      - dagshub>=0.3
+      - onnx
+      - onnxruntime

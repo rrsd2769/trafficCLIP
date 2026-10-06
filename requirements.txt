@@ -1,0 +1,36 @@
+# OptimizedTrafficCLIP: macOS arm64 (Apple silicon) working set.
+#
+# Replaces environment.yml for local execution. The shipped conda spec pins
+# torchvision==0.15.* against pytorch==2.8.*, which cannot solve; these pins
+# are the resolved, tested combination on Python 3.12 / arm64 with MPS.
+
+# Core data
+numpy>=1.26,<3
+scipy>=1.11
+pandas>=2.1
+pyyaml>=6.0
+requests>=2.31
+scapy>=2.5
+py7zr>=0.20
+
+# Deep learning (MPS-enabled wheels)
+torch>=2.4
+torchvision>=0.19
+transformers>=4.44
+huggingface_hub>=0.24
+
+# Metrics
+scikit-learn>=1.4
+
+# Visualization
+matplotlib>=3.8
+seaborn>=0.13
+
+# Optimization
+optuna>=3.6
+
+# Config
+python-dotenv>=1.0
+
+# Testing
+pytest>=8.0
