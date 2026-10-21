@@ -138,7 +138,7 @@ ISCXVPN2016 archive runs through the same commands with
 `--npz data/processed/iscxvpn_5class.npz --classes 5`, passing
 `--out results/comparison/A_5class.csv` (or `A_Full_5class.csv`) to the two A trainers.
 
-### Residual-error analysis (Fig. 2)
+### Residual-error analysis (Section "Anatomy of a Confusable Pair")
 
 ```bash
 PYTHONPATH=. .venv/bin/python scripts/analyze_confusable_pair.py
