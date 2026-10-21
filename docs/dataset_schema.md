@@ -11,8 +11,8 @@ Produced by `src/make_traffic_dataset.py`. One `.npz` per class set.
 
 ## `labels` is (K,), not (N,)
 
-The run book (`OptimizedTrafficCLIP_Guide.docx`, section 3.2) documents `labels`
-as an `(N,)` array carrying one name per sample. It is not. The writer emits
+The original project's run book (section 3.2, not included in this package)
+documents `labels` as an `(N,)` array carrying one name per sample. It is not. The writer emits
 `list(label_map.keys())`, one name per class, positionally aligned with `y`:
 
 ```python
@@ -22,7 +22,7 @@ class_name = data["labels"][i]        # what the guide implies; wrong
 
 `src/dataset.py` (`self.class_names[label]`) and `src/benchmark.py` both depend
 on the real behaviour, so the schema stays as it is and the guide is the thing
-that is wrong. Use this file rather than section 3.2.
+that is wrong. Treat this file as the reference for the schema.
 
 ## Archives
 
@@ -44,12 +44,12 @@ Geodo, Miuref). The 20-class set adds FTP, Gmail, Outlook, SMB,
 WorldOfWarcraft, Htbot, Neris, Nsis-ay, Shifu, Virut.
 
 **Gmail** is in the 20-class set but not the 10-class subset, despite appearing
-in `notebooks/01_data_exploration.ipynb`, in `src/run_explain.sh`'s `--conflicts`
-default, and in the commented-out `prompts:` block of `config/config.yaml`. Those
-belong to a superseded six-class experiment, {BitTorrent, Cridex, Gmail, Skype,
-Tinba, Zeus} at 1500 samples/class, which is what produced the results under
-`results/metrics/v0.0.1/`. The class names on the `v0.0.1` confusion-matrix axes
-confirm this. The manuscript replaced that experiment with the 10-class subset
+in `src/run_explain.sh`'s `--conflicts` default and in the commented-out
+`prompts:` block of `config/config.yaml`. Those belong to a superseded six-class
+experiment, {BitTorrent, Cridex, Gmail, Skype, Tinba, Zeus} at 1500
+samples/class, from the original project's v0.0.1 release (its results are not
+included in this package; the class names on its confusion-matrix axes identify
+the class set). The manuscript replaced that experiment with the 10-class subset
 above.
 
 ## Header masking

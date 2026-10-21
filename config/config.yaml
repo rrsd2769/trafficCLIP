@@ -56,12 +56,11 @@ dataset:
     # (section V.A): five benign, five malware. This is the B configuration
     # and the row that A's 10-class run is compared against.
     #
-    # Note on Gmail: it appears in the notebook, in run_explain.sh's --conflicts
-    # default, and in the commented-out `prompts:` block below, but not here.
-    # That is not an error. Those references belong to an earlier SIX-class
-    # experiment {BitTorrent, Cridex, Gmail, Skype, Tinba, Zeus} at 1500
-    # samples/class, whose results are the ones under results/metrics/v0.0.1/
-    # (confirmed from the axis labels of the v0.0.1 confusion matrices). The
+    # Note on Gmail: it appears in run_explain.sh's --conflicts default and in
+    # the commented-out `prompts:` block below, but not here. That is not an
+    # error. Those references belong to an earlier SIX-class experiment
+    # {BitTorrent, Cridex, Gmail, Skype, Tinba, Zeus} at 1500 samples/class,
+    # from the original project's v0.0.1 release (see docs/dataset_schema.md). The
     # manuscript supersedes it with the 10-class subset listed here. Gmail is
     # still downloaded, because it is part of the full 20-class set for A.
     subset_10class:

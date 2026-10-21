@@ -9,8 +9,8 @@ Output schema (`.npz`, see `docs/dataset_schema.md`):
     labels (K,)           <U str    class names, indexed by y -- NOT per-sample
 
 Note the `labels` shape: it is K class names indexed by label, not an (N,) array of
-per-sample names. The run book (OptimizedTrafficCLIP_Guide.docx, section 3.2)
-documents it as (N,); that is wrong. `dataset.py` and `benchmark.py` both depend on
+per-sample names. The original project's run book (section 3.2) documents it as
+(N,); that is wrong. `dataset.py` and `benchmark.py` both depend on
 the actual K-name behaviour, so the schema is documented rather than changed.
 """
 
